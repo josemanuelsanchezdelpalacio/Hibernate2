@@ -5,5 +5,13 @@
              version="3.0">
   <persistence-unit name="default">
 
+    <class>entities.departamentos</class>
+      <class>entities.empleados</class>
+      <properties>
+          <property name="hibernate.connection.url" value="jdbc:mysql://localhost:6606/miBD"/>
+          <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>
+          <property name="hibernate.connection.username" value="root"/>
+          <property name="hibernate.connection.password" value="admin"/>
+      </properties>
   </persistence-unit>
 </persistence>
