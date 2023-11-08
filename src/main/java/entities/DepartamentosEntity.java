@@ -6,7 +6,7 @@ import java.util.Collection;
 
 @Entity
 @Table(name = "departamentos", schema = "miBD")
-public class departamentos {
+public class DepartamentosEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "dept_no", nullable = false)
@@ -18,7 +18,7 @@ public class departamentos {
     @Column(name = "loc", nullable = true, length = 15)
     private String loc;
     @OneToMany(mappedBy = "departamentosByDeptNo")
-    private Collection<empleados> empleadosByDeptNo;
+    private Collection<EmpleadosEntity> empleadosByDeptNo;
 
     public Byte getDeptNo() {
         return deptNo;
@@ -49,7 +49,7 @@ public class departamentos {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        departamentos that = (departamentos) o;
+        DepartamentosEntity that = (DepartamentosEntity) o;
 
         if (deptNo != null ? !deptNo.equals(that.deptNo) : that.deptNo != null) return false;
         if (dnombre != null ? !dnombre.equals(that.dnombre) : that.dnombre != null) return false;
@@ -66,11 +66,11 @@ public class departamentos {
         return result;
     }
 
-    public Collection<empleados> getEmpleadosByDeptNo() {
+    public Collection<EmpleadosEntity> getEmpleadosByDeptNo() {
         return empleadosByDeptNo;
     }
 
-    public void setEmpleadosByDeptNo(Collection<empleados> empleadosByDeptNo) {
+    public void setEmpleadosByDeptNo(Collection<EmpleadosEntity> empleadosByDeptNo) {
         this.empleadosByDeptNo = empleadosByDeptNo;
     }
 }

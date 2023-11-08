@@ -6,7 +6,7 @@ import java.sql.Date;
 
 @Entity
 @Table(name = "empleados", schema = "miBD")
-public class empleados {
+public class EmpleadosEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "emp_no", nullable = false)
@@ -30,11 +30,11 @@ public class empleados {
     @Column(name = "comision", nullable = true, precision = 2)
     private Double comision;
     @Basic
-    @Column(name = "dept_no", nullable = false)
+    @Column(name = "dept_no", nullable = false, insertable = false, updatable = false)
     private Byte deptNo;
     @ManyToOne
     @JoinColumn(name = "dept_no", referencedColumnName = "dept_no", nullable = false)
-    private departamentos departamentosByDeptNo;
+    private DepartamentosEntity departamentosByDeptNo;
 
     public Short getEmpNo() {
         return empNo;
@@ -105,16 +105,16 @@ public class empleados {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        empleados empleados = (empleados) o;
+        EmpleadosEntity that = (EmpleadosEntity) o;
 
-        if (empNo != null ? !empNo.equals(empleados.empNo) : empleados.empNo != null) return false;
-        if (apellido != null ? !apellido.equals(empleados.apellido) : empleados.apellido != null) return false;
-        if (oficio != null ? !oficio.equals(empleados.oficio) : empleados.oficio != null) return false;
-        if (dir != null ? !dir.equals(empleados.dir) : empleados.dir != null) return false;
-        if (fechaAlt != null ? !fechaAlt.equals(empleados.fechaAlt) : empleados.fechaAlt != null) return false;
-        if (salario != null ? !salario.equals(empleados.salario) : empleados.salario != null) return false;
-        if (comision != null ? !comision.equals(empleados.comision) : empleados.comision != null) return false;
-        if (deptNo != null ? !deptNo.equals(empleados.deptNo) : empleados.deptNo != null) return false;
+        if (empNo != null ? !empNo.equals(that.empNo) : that.empNo != null) return false;
+        if (apellido != null ? !apellido.equals(that.apellido) : that.apellido != null) return false;
+        if (oficio != null ? !oficio.equals(that.oficio) : that.oficio != null) return false;
+        if (dir != null ? !dir.equals(that.dir) : that.dir != null) return false;
+        if (fechaAlt != null ? !fechaAlt.equals(that.fechaAlt) : that.fechaAlt != null) return false;
+        if (salario != null ? !salario.equals(that.salario) : that.salario != null) return false;
+        if (comision != null ? !comision.equals(that.comision) : that.comision != null) return false;
+        if (deptNo != null ? !deptNo.equals(that.deptNo) : that.deptNo != null) return false;
 
         return true;
     }
@@ -132,11 +132,11 @@ public class empleados {
         return result;
     }
 
-    public departamentos getDepartamentosByDeptNo() {
+    public DepartamentosEntity getDepartamentosByDeptNo() {
         return departamentosByDeptNo;
     }
 
-    public void setDepartamentosByDeptNo(departamentos departamentosByDeptNo) {
+    public void setDepartamentosByDeptNo(DepartamentosEntity departamentosByDeptNo) {
         this.departamentosByDeptNo = departamentosByDeptNo;
     }
 }
