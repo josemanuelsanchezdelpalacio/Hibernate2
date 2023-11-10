@@ -7,35 +7,18 @@ import java.sql.Date;
 @Entity
 @Table(name = "empleados", schema = "miBD")
 public class EmpleadosEntity {
+    private Short empNo;
+    private String apellido;
+    private String oficio;
+    private Short dir;
+    private Date fechaAlt;
+    private Double salario;
+    private Double comision;
+    private Byte deptNo;
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "emp_no", nullable = false)
-    private Short empNo;
-    @Basic
-    @Column(name = "apellido", nullable = true, length = 10)
-    private String apellido;
-    @Basic
-    @Column(name = "oficio", nullable = true, length = 10)
-    private String oficio;
-    @Basic
-    @Column(name = "dir", nullable = true)
-    private Short dir;
-    @Basic
-    @Column(name = "fecha_alt", nullable = true)
-    private Date fechaAlt;
-    @Basic
-    @Column(name = "salario", nullable = true, precision = 2)
-    private Double salario;
-    @Basic
-    @Column(name = "comision", nullable = true, precision = 2)
-    private Double comision;
-    @Basic
-    @Column(name = "dept_no", nullable = false, insertable = false, updatable = false)
-    private Byte deptNo;
-    @ManyToOne
-    @JoinColumn(name = "dept_no", referencedColumnName = "dept_no", nullable = false)
-    private DepartamentosEntity departamentosByDeptNo;
-
     public Short getEmpNo() {
         return empNo;
     }
@@ -44,6 +27,8 @@ public class EmpleadosEntity {
         this.empNo = empNo;
     }
 
+    @Basic
+    @Column(name = "apellido", nullable = true, length = 10)
     public String getApellido() {
         return apellido;
     }
@@ -52,6 +37,8 @@ public class EmpleadosEntity {
         this.apellido = apellido;
     }
 
+    @Basic
+    @Column(name = "oficio", nullable = true, length = 10)
     public String getOficio() {
         return oficio;
     }
@@ -60,6 +47,8 @@ public class EmpleadosEntity {
         this.oficio = oficio;
     }
 
+    @Basic
+    @Column(name = "dir", nullable = true)
     public Short getDir() {
         return dir;
     }
@@ -68,6 +57,8 @@ public class EmpleadosEntity {
         this.dir = dir;
     }
 
+    @Basic
+    @Column(name = "fecha_alt", nullable = true)
     public Date getFechaAlt() {
         return fechaAlt;
     }
@@ -76,6 +67,8 @@ public class EmpleadosEntity {
         this.fechaAlt = fechaAlt;
     }
 
+    @Basic
+    @Column(name = "salario", nullable = true, precision = 2)
     public Double getSalario() {
         return salario;
     }
@@ -84,6 +77,8 @@ public class EmpleadosEntity {
         this.salario = salario;
     }
 
+    @Basic
+    @Column(name = "comision", nullable = true, precision = 2)
     public Double getComision() {
         return comision;
     }
@@ -92,6 +87,8 @@ public class EmpleadosEntity {
         this.comision = comision;
     }
 
+    @Basic
+    @Column(name = "dept_no", nullable = false)
     public Byte getDeptNo() {
         return deptNo;
     }
@@ -105,16 +102,16 @@ public class EmpleadosEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        EmpleadosEntity that = (EmpleadosEntity) o;
+        EmpleadosEntity empleados = (EmpleadosEntity) o;
 
-        if (empNo != null ? !empNo.equals(that.empNo) : that.empNo != null) return false;
-        if (apellido != null ? !apellido.equals(that.apellido) : that.apellido != null) return false;
-        if (oficio != null ? !oficio.equals(that.oficio) : that.oficio != null) return false;
-        if (dir != null ? !dir.equals(that.dir) : that.dir != null) return false;
-        if (fechaAlt != null ? !fechaAlt.equals(that.fechaAlt) : that.fechaAlt != null) return false;
-        if (salario != null ? !salario.equals(that.salario) : that.salario != null) return false;
-        if (comision != null ? !comision.equals(that.comision) : that.comision != null) return false;
-        if (deptNo != null ? !deptNo.equals(that.deptNo) : that.deptNo != null) return false;
+        if (empNo != null ? !empNo.equals(empleados.empNo) : empleados.empNo != null) return false;
+        if (apellido != null ? !apellido.equals(empleados.apellido) : empleados.apellido != null) return false;
+        if (oficio != null ? !oficio.equals(empleados.oficio) : empleados.oficio != null) return false;
+        if (dir != null ? !dir.equals(empleados.dir) : empleados.dir != null) return false;
+        if (fechaAlt != null ? !fechaAlt.equals(empleados.fechaAlt) : empleados.fechaAlt != null) return false;
+        if (salario != null ? !salario.equals(empleados.salario) : empleados.salario != null) return false;
+        if (comision != null ? !comision.equals(empleados.comision) : empleados.comision != null) return false;
+        if (deptNo != null ? !deptNo.equals(empleados.deptNo) : empleados.deptNo != null) return false;
 
         return true;
     }
@@ -130,13 +127,5 @@ public class EmpleadosEntity {
         result = 31 * result + (comision != null ? comision.hashCode() : 0);
         result = 31 * result + (deptNo != null ? deptNo.hashCode() : 0);
         return result;
-    }
-
-    public DepartamentosEntity getDepartamentosByDeptNo() {
-        return departamentosByDeptNo;
-    }
-
-    public void setDepartamentosByDeptNo(DepartamentosEntity departamentosByDeptNo) {
-        this.departamentosByDeptNo = departamentosByDeptNo;
     }
 }

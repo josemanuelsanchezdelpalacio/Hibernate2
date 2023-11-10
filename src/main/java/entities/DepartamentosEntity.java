@@ -2,24 +2,16 @@ package entities;
 
 import jakarta.persistence.*;
 
-import java.util.Collection;
-
 @Entity
 @Table(name = "departamentos", schema = "miBD")
 public class DepartamentosEntity {
+    private Byte deptNo;
+    private String dnombre;
+    private String loc;
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "dept_no", nullable = false)
-    private Byte deptNo;
-    @Basic
-    @Column(name = "dnombre", nullable = true, length = 15)
-    private String dnombre;
-    @Basic
-    @Column(name = "loc", nullable = true, length = 15)
-    private String loc;
-    @OneToMany(mappedBy = "departamentosByDeptNo")
-    private Collection<EmpleadosEntity> empleadosByDeptNo;
-
     public Byte getDeptNo() {
         return deptNo;
     }
@@ -28,6 +20,8 @@ public class DepartamentosEntity {
         this.deptNo = deptNo;
     }
 
+    @Basic
+    @Column(name = "dnombre", nullable = true, length = 15)
     public String getDnombre() {
         return dnombre;
     }
@@ -36,6 +30,8 @@ public class DepartamentosEntity {
         this.dnombre = dnombre;
     }
 
+    @Basic
+    @Column(name = "loc", nullable = true, length = 15)
     public String getLoc() {
         return loc;
     }
@@ -64,13 +60,5 @@ public class DepartamentosEntity {
         result = 31 * result + (dnombre != null ? dnombre.hashCode() : 0);
         result = 31 * result + (loc != null ? loc.hashCode() : 0);
         return result;
-    }
-
-    public Collection<EmpleadosEntity> getEmpleadosByDeptNo() {
-        return empleadosByDeptNo;
-    }
-
-    public void setEmpleadosByDeptNo(Collection<EmpleadosEntity> empleadosByDeptNo) {
-        this.empleadosByDeptNo = empleadosByDeptNo;
     }
 }

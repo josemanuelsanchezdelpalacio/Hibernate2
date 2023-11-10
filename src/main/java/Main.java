@@ -3,6 +3,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 
 import static database.ConsultasEmpleados.leerEmps;
+import static database.ConsultasEmpleados.modificarEmpleado;
 
 public class Main {
 
@@ -11,6 +12,7 @@ public class Main {
 
     public static void main(String[] args){
         leerEmps(em);
+        modificarEmpleado(em);
         desconectar();
     }
 
